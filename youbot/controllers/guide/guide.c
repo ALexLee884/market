@@ -51,10 +51,16 @@ const WbCameraRecognitionObject *object;
 double value_top,value6,value7,value8, value_front1,value_front2;
 double lift_degree = 0.0;
 double finger_degree = 0.0;
-int wbottle = 565;
-int gcan = 673;
-int rcan = 2975;
-int bbottle = 453;
+double high = 0.0;
+int i = 0;
+double water = 1.0;
+double greencan = 0.9;
+double redcan = 0.8;
+double beer = 0.7;
+double jerry = 0.6;
+double cereal = 0.5;
+double milk = 0.4;
+double biscuit = 0.3;
 static void initialize() {
   /* necessary to initialize Webots */
   wb_robot_init();
@@ -151,38 +157,75 @@ void stop(double seconds) {
 
 static void recognize_object(){
     object = wb_camera_recognition_get_objects(camera);
-    int id = object->id;
+    //int id = object->id;
+    double *colors = object->colors;
     int x = object->position_on_image[0];
     int w = object->size_on_image[0];
     int h = object->size_on_image[1];
     if((x+w/2)<315 && x>100 && w>0 && h>100){
-      if(id == rcan){
+      if(colors[0] == redcan){
         targetshelf = 1;
         shelf_floor = 1;
         lift_degree = 0.29;
         finger_degree = 0.015;
-        rcan = 1;
+        redcan = -1.0;
       }
-      else if(id == bbottle){
+      else if(colors[0] == beer){
         targetshelf = 2;
         shelf_floor = 1;
         lift_degree = 0.235;
         finger_degree = 0.014;
-        bbottle = 2;
+        beer = -1.0;
       }
-      else if(id == gcan){
+      else if(colors[0] == greencan){
         targetshelf = 3;
         shelf_floor = 1;
         lift_degree = 0.28;
         finger_degree = 0.015;
-        gcan = 3;
+        greencan = -1.0;
       }
-      else if(id == wbottle){
+      else if(colors[0] == water){
          targetshelf = 4;
          shelf_floor = 1;
-         lift_degree = 0.19;
+         lift_degree = 0.195;
          finger_degree = 0.027;
-         wbottle = 4;
+         water = -1.0;
+      }
+      else if(colors[0] == biscuit){
+        targetshelf = 1;
+        shelf_floor = 2;
+        lift_degree = 0.29;
+        high = -0.2;
+        i = 0;
+        finger_degree = 0.022;
+        biscuit = -1.0;
+      }
+      else if(colors[0] == jerry){
+        targetshelf = 4;
+        shelf_floor = 2;
+        lift_degree = 0.3;
+        high = -0.4;
+        i = 0;
+        finger_degree = 0.022;
+        jerry = -1.0;
+      }
+      else if(colors[0] == milk){
+        targetshelf = 3;
+        shelf_floor = 2;
+        lift_degree = 0.2;
+        i = 2;
+        high = -0.2;
+        finger_degree = 0.02;
+        milk = -1.0;
+      }
+      else if(colors[0] == cereal){
+        targetshelf = 2;
+        shelf_floor = 2;
+        lift_degree = 0.3;
+        i = 3;
+        high = -0.4;
+        finger_degree = 0.02;
+        cereal = -1.0;
       }
       else{
       
@@ -344,7 +387,7 @@ void taking_goods(double lift_degree, double finger_degree){
 
 //鎶婅揣鐗╂斁鍒拌揣鏋朵笂
 
-void putting_goods(double lift_degree){
+void putting_goods_one(double lift_degree){
   int i = 0;
   int go = 0;
   moveForwards(1.25);
@@ -354,7 +397,7 @@ void putting_goods(double lift_degree){
   value7 = wb_distance_sensor_get_value(so7);
   value8 = wb_distance_sensor_get_value(so8);
   printf("%10.3f\n",value6+value7+value8);
-  while(value6+value7+value8>2710 || value6+value7+value8<1900){
+  while(value6+value7+value8>2700 || value6+value7+value8<1900){
     stepp();
     moveForwards(1.25);
     step(2.04);
@@ -401,7 +444,7 @@ void putting_goods(double lift_degree){
     wb_robot_step(time_step);
     go -= time_step;
   }
-  
+  moveFingers(0.04);
   stop(0.5);
   lift(0.2);
   turn(-pi);
@@ -410,6 +453,50 @@ void putting_goods(double lift_degree){
   
 }
 
+void putting_goods_two(double lift_degree, double high){
+    int go = 0;
+
+    moveForwards(1.25);
+    step(2.76 + i*2.04);
+    stop(1.0);
+    putting_time = 2.76 + i*2.04;
+    turn(pi);
+    step(turntime2);
+ 
+    stop(0.5);
+    lift(high + lift_degree - 0.017);
+    stop(5.0);
+    value_top = wb_distance_sensor_get_value(ds_top);
+
+    while(value_top > 720.0){
+      stepp();
+      moveForwards(1.25);
+      value_top = wb_distance_sensor_get_value(ds_top);
+
+      wb_robot_step(time_step);
+      go += time_step;
+    }
+        
+    stop(1.0);
+    lift(high + lift_degree);
+    stop(1.0);
+    moveFingers(0.035);
+    stop(2.0);
+    while(go > 0){
+      stepp();
+      moveForwards(-1.25);
+      wb_robot_step(time_step);
+      go -= time_step;
+    }
+    moveFingers(0.04);
+    stop(0.5);
+    lift(0.2);
+    turn(-pi);
+    compass_turn();
+    stop(0.5);
+
+        
+}
 //鏁翠釜鍙?鏀捐繃绋?
 void wholeprocess(){
     while(true){
@@ -427,10 +514,15 @@ void wholeprocess(){
         movestraight(linetime);
         turnleft();
     }
-    
-    putting_goods(lift_degree);
+    if(shelf_floor == 1){
+        putting_goods_one(lift_degree);
+    }
+    else if(shelf_floor == 2){
+        putting_goods_two(lift_degree, high);
+    }
     targetshelf = 0;
     shelf_floor = 0;
+    i = 0;
 }
 
 int main() {
