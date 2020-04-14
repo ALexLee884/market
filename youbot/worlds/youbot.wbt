@@ -1,0 +1,120 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  info [
+    "Simulation of the KUKA youBot robot."
+    "This model includes an accurate and fast simulation of the Meccanum wheels."
+    "The robot can be equiped with various sensors (including the Microsoft Kinect) and configured with zero, one or two arms."
+  ]
+  title "KUKA youBot"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation -0.9648 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation 0.9648 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.13237448053138262 0.9542864065776806 0.26798218434273585 4.0344443841847895
+  position -1.7992441925865852 1.8434014679143702 -1.213181638139706
+  follow "youBot"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 100 100
+}
+Solid {
+  translation 0.605448 0.2 -0.00121984
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "D:/webot/Webots/projects/objects/factory/containers/protos/textures/wooden_box_base_color.jpg"
+          ]
+        }
+        roughnessMap ImageTexture {
+          url [
+            "D:/webot/Webots/projects/objects/factory/containers/protos/textures/wooden_box_roughness.jpg"
+          ]
+        }
+        metalness 0
+        normalMap ImageTexture {
+          url [
+            "D:/webot/Webots/projects/objects/factory/containers/protos/textures/wooden_box_normal.jpg"
+          ]
+        }
+        occlusionMap ImageTexture {
+          url [
+            "D:/webot/Webots/projects/objects/factory/containers/protos/textures/wooden_box_occlusion.jpg"
+          ]
+        }
+      }
+      geometry Box {
+        size 0.6 0.4 0.6
+      }
+    }
+  ]
+  name "wooden box"
+  model "wooden box"
+  boundingObject Box {
+    size 0.6 0.4 0.6
+  }
+  recognitionColors [
+    1 1 1
+  ]
+}
+KukaBox {
+  translation 0.472629 0.41876 -0.00710068
+}
+Youbot {
+  translation 0 0.102838 0
+  controllerArgs "demo"
+  bodySlot [
+    Camera {
+      translation 0.23 0 0.04
+      rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 -2.094395307179586
+      children [
+        Solid {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 1
+      width 512
+      height 512
+      recognition Recognition {
+      }
+    }
+  ]
+}
