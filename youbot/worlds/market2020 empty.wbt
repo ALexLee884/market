@@ -3,8 +3,8 @@ WorldInfo {
   basicTimeStep 16
 }
 Viewpoint {
-  orientation -0.02985599533027196 0.8696132647247014 0.49282998017337115 3.1525604453514764
-  position -0.12570148112998392 5.283095865548621 -2.907874239903695
+  orientation -0.01859157866394517 0.8384129249253716 0.5447183864354732 3.1896600069906227
+  position -0.10376531134246487 5.873527411870093 -2.831074784319093
 }
 Background {
   skyColor [
@@ -166,7 +166,7 @@ Solid {
   }
 }
 CerealBox {
-  translation 0.497499 0.0010538 -0.471689
+  translation 0.556876 0.0010538 -0.48879
   rotation -3.5539484078197423e-12 1 -2.6359730574908707e-11 1.0150300000602365e-06
   name "cereal box(8)"
 }
@@ -2865,7 +2865,7 @@ Solid {
   ]
 }
 Solid {
-  translation 0.292448 0.0010538 -0.479128
+  translation 0.356565 0.0010538 -0.501038
   rotation -6.91549e-12 -1 -1.73195e-11 -5.307179586466759e-06
   children [
     Transform {
@@ -6127,7 +6127,7 @@ Robot {
       type "sonar"
     }
     DEF SO_7 DistanceSensor {
-      translation 0.138094 0.024 -0.0610446
+      translation 0.138094 0.024 -0.0510446
       children [
         DEF BLACK_BODY_SHAPE Shape {
           appearance PBRAppearance {
@@ -6238,7 +6238,7 @@ Robot {
       type "sonar"
     }
     DEF SO_8 DistanceSensor {
-      translation 0.137294 0.024 0.064945
+      translation 0.137294 0.024 0.044945
       children [
         DEF BLACK_BODY_SHAPE Shape {
           appearance PBRAppearance {

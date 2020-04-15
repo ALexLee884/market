@@ -194,7 +194,7 @@ static void recognize_object(){
       else if(colors[0] == biscuit){
         targetshelf = 1;
         shelf_floor = 2;
-        lift_degree = 0.29;
+        lift_degree = 0.25;
         high = -0.2;
         i = 0;
         finger_degree = 0.022;
@@ -212,7 +212,7 @@ static void recognize_object(){
       else if(colors[0] == milk){
         targetshelf = 3;
         shelf_floor = 2;
-        lift_degree = 0.2;
+        lift_degree = 0.15;
         i = 2;
         high = -0.2;
         finger_degree = 0.02;
@@ -221,10 +221,10 @@ static void recognize_object(){
       else if(colors[0] == cereal){
         targetshelf = 2;
         shelf_floor = 2;
-        lift_degree = 0.3;
+        lift_degree = 0.25;
         i = 3;
         high = -0.4;
-        finger_degree = 0.02;
+        finger_degree = 0.019;
         cereal = -1.0;
       }
       else{
@@ -258,7 +258,7 @@ static void compass_turn(){
       //step(turntime1);
       while(true){
         direction = wb_compass_get_values(compass);
-        if(-0.003<=direction[0] && direction[0]<=0.003 && direction[2]<=-0.997) break;
+        if(-0.002<=direction[0] && direction[0]<=0.002 && direction[2]<=-0.998) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -267,7 +267,7 @@ static void compass_turn(){
     else if(shelf == 3){
       while(true){
         direction = wb_compass_get_values(compass);
-        if(direction[0]>=0.997 && -0.003<=direction[2] && direction[2]<=0.003) break;
+        if(direction[0]>=0.998 && -0.002<=direction[2] && direction[2]<=0.002) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -275,7 +275,7 @@ static void compass_turn(){
     else if(shelf == 4){
       while(true){
         direction = wb_compass_get_values(compass);
-        if(-0.003<=direction[0] && direction[0]<=0.003 && direction[2]>=0.997) break;
+        if(-0.002<=direction[0] && direction[0]<=0.002 && direction[2]>=0.998) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -284,7 +284,7 @@ static void compass_turn(){
       //step(turntime2);
       while(true){
         direction = wb_compass_get_values(compass);
-        if(direction[0]<=-0.997 && -0.003<=direction[2] && direction[2]<=0.003) break;
+        if(direction[0]<=-0.998 && -0.002<=direction[2] && direction[2]<=0.002) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -294,12 +294,12 @@ static void compass_turn(){
 //鎷愯澶勮浆寮紝鏇存柊淇℃伅
 static void turnleft(){
     int go_time = 0;
-    turn(-pi);
+    turn(-0.3);
     if(shelf == 1){
       //step(turntime1);
       while(true){
         direction = wb_compass_get_values(compass);
-        if(-0.003<=direction[0] && direction[0]<=0.003 && direction[2]<=-0.997) break;
+        if(-0.002<=direction[0] && direction[0]<=0.002 && direction[2]<=-0.998) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -308,7 +308,7 @@ static void turnleft(){
     else if(shelf == 2){
       while(true){
         direction = wb_compass_get_values(compass);
-        if(direction[0]>=0.997 && -0.003<=direction[2] && direction[2]<=0.003) break;
+        if(direction[0]>=0.998 && -0.002<=direction[2] && direction[2]<=0.002) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -316,7 +316,7 @@ static void turnleft(){
     else if(shelf == 3){
       while(true){
         direction = wb_compass_get_values(compass);
-        if(-0.003<=direction[0] && direction[0]<=0.003 && direction[2]>=0.997) break;
+        if(-0.002<=direction[0] && direction[0]<=0.002 && direction[2]>=0.998) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -325,7 +325,7 @@ static void turnleft(){
       //step(turntime2);
       while(true){
         direction = wb_compass_get_values(compass);
-        if(direction[0]<=-0.997 && -0.003<=direction[2] && direction[2]<=0.003) break;
+        if(direction[0]<=-0.998 && -0.002<=direction[2] && direction[2]<=0.002) break;
         wb_robot_step(time_step);
         go_time += time_step;
       }
@@ -380,7 +380,7 @@ void taking_goods(double lift_degree, double finger_degree){
         go -= time_step;
     }
     stop(0.5);
-    turn(pi);
+    turn(0.3);
     compass_turn();
     stop(0.5);
 }
@@ -447,7 +447,7 @@ void putting_goods_one(double lift_degree){
   moveFingers(0.04);
   stop(0.5);
   lift(0.2);
-  turn(-pi);
+  turn(-0.3);
   compass_turn();
   stop(0.5);
   
@@ -491,7 +491,7 @@ void putting_goods_two(double lift_degree, double high){
     moveFingers(0.04);
     stop(0.5);
     lift(0.2);
-    turn(-pi);
+    turn(-0.3);
     compass_turn();
     stop(0.5);
 
