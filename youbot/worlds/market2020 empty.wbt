@@ -3,8 +3,8 @@ WorldInfo {
   basicTimeStep 16
 }
 Viewpoint {
-  orientation -0.01859157866394517 0.8384129249253716 0.5447183864354732 3.1896600069906227
-  position -0.10376531134246487 5.873527411870093 -2.831074784319093
+  orientation -0.022463981988724544 0.8695693543872067 0.49329961222752533 3.1786483039482856
+  position -0.07028401065056625 5.280037914097617 -3.407176456031542
 }
 Background {
   skyColor [
@@ -14,9 +14,6 @@ Background {
 DirectionalLight {
   direction 0 -1 0
   intensity 2.3
-}
-Floor {
-  size 3 3
 }
 DEF beer Solid {
   translation 1.74924 0.0623157 -0.380219
@@ -171,7 +168,7 @@ CerealBox {
   name "cereal box(8)"
 }
 CerealBox {
-  translation 0.498106 0.0010538 0.444913
+  translation 0.548631 0.0010538 0.458996
   rotation 0.9999881929525688 -0.0048213698415216525 0.0006069170513607486 -4.1891703403475754e-14
   name "cereal box(17)"
   textureUrl [
@@ -330,12 +327,8 @@ Solid {
     mass 0.5
   }
 }
-Floor {
-  name "floor(6)"
-  size 3 3
-}
 DEF soda Solid {
-  translation -0.310871 0.0623157 0.474658
+  translation 0.253269 0.0623157 0.249562
   rotation 7.913527667510631e-08 -0.9999999999999575 2.804631833207171e-07 1.7057904843291386e-06
   children [
     Shape {
@@ -385,10 +378,6 @@ DEF soda Solid {
     density -1
     mass 0.35
   }
-}
-Floor {
-  name "floor(7)"
-  size 3 3
 }
 Solid {
   translation -1.79864 0.201171 0.868624
@@ -603,10 +592,6 @@ Solid {
     density -1
     mass 0.4
   }
-}
-Floor {
-  name "floor(5)"
-  size 3 3
 }
 Floor {
   name "floor(3)"
@@ -1563,7 +1548,7 @@ DEF soda Solid {
   }
 }
 DEF beer Solid {
-  translation -0.5225 0.0623157 -0.226068
+  translation -0.542988 0.0623157 0.259908
   rotation -3.335250062911457e-14 1 7.225825486025244e-15 0.010186318133006715
   children [
     Shape {
@@ -1870,7 +1855,7 @@ Solid {
   }
 }
 Solid {
-  translation -0.131568 0.00171076 1.75493
+  translation -0.101568 0.00171076 1.75493
   rotation -0.1287674174881828 0.012827932019595215 -0.9915918496808678 -2.0843470299792876e-16
   children [
     Shape {
@@ -2163,7 +2148,7 @@ Solid {
   }
 }
 Solid {
-  translation 0.870802 -0.0008481 -1.80148
+  translation 0.862272 -0.0008481 -1.78022
   rotation 1.9377864194236335e-10 0.9999999999999999 6.349409925060917e-11 -1.8315955963995814
   children [
     Shape {
@@ -2505,7 +2490,7 @@ DEF soda Solid {
   }
 }
 Solid {
-  translation 0.517812 0.00171076 0.17405
+  translation -0.534067 0.00171076 -0.248131
   rotation -0.5823559731474037 0.14262926658833436 0.8003239424458164 -2.519664079437813e-16
   children [
     Shape {
@@ -2701,10 +2686,6 @@ Solid {
     mass 0.2
   }
 }
-Floor {
-  name "floor(4)"
-  size 3 3
-}
 Solid {
   translation 0.369876 0.00171076 1.75842
   rotation -0.1287674174881828 0.012827932019595215 -0.9915918496808678 -2.0843470299792876e-16
@@ -2865,7 +2846,7 @@ Solid {
   ]
 }
 Solid {
-  translation 0.356565 0.0010538 -0.501038
+  translation 0.337205 0.0010538 -0.495694
   rotation -6.91549e-12 -1 -1.73195e-11 -5.307179586466759e-06
   children [
     Transform {
@@ -2930,7 +2911,7 @@ Solid {
   ]
 }
 Solid {
-  translation -0.5320610332000026 -0.0008480997674437663 0.2488673140294084
+  translation 0.560788 -0.0008481 0.213879
   rotation 1.9377863520330995e-10 0.9999999999999999 6.349410445438056e-11 -1.8315955963995814
   children [
     Shape {
@@ -3027,12 +3008,8 @@ Solid {
     1 1 1
   ]
 }
-Floor {
-  name "floor(2)"
-  size 3 3
-}
 Solid {
-  translation -0.873649 0.00171076 1.7558
+  translation -0.867514 0.00171076 1.74153
   rotation -0.1287674174881828 0.012827932019595215 -0.9915918496808678 -2.0843470299792876e-16
   children [
     Shape {
@@ -3130,12 +3107,8 @@ Solid {
     mass 0.4
   }
 }
-Floor {
-  name "floor(1)"
-  size 3 3
-}
 Solid {
-  translation -0.113016 0.00171076 0.508833
+  translation -0.134402 0.00171076 -0.495676
   rotation -0.1287674174881828 0.012827932019595215 -0.9915918496808678 -2.0843470299792876e-16
   children [
     Shape {
@@ -3234,7 +3207,7 @@ Solid {
   }
 }
 DEF bear Solid {
-  translation -0.507233 0.06231566500522322 0.392722
+  translation -0.53429 0.0623157 0.544165
   rotation 1.9222521078304474e-10 1 1.1355276481055271e-10 -7.239265401191742e-07
   children [
     Shape {
@@ -3495,7 +3468,7 @@ DEF REPOSITORY Solid {
   boundingObject USE repository
 }
 DEF soda Solid {
-  translation -0.200661 0.0623157 -0.575109
+  translation -0.223203 0.0623157 0.570715
   rotation 7.913295485188019e-08 -0.9999999999999576 2.8046192255094294e-07 1.7057904843259197e-06
   children [
     Shape {
